@@ -17,10 +17,10 @@ class EncryptorTest {
     @Test
     fun testEncrypt() {
         val context = ApplicationProvider.getApplicationContext<Context>()
-        val encryptor = CryptoSDK(context)
-        encryptor.init()
+        val cryptoSDK = CryptoSDK(context)
+        cryptoSDK.init()
         val message = "Hello, Android!"
-        val encryptedMessage = encryptor.encrypt(message, encryptor.publicKey)
+        val encryptedMessage = cryptoSDK.encrypt(message, cryptoSDK.publicKey)
 
         // Assert that the encrypted message is not null and not equal to the original message
         assertNotNull(encryptedMessage)
@@ -28,7 +28,7 @@ class EncryptorTest {
 
         Log.d("EncryptorTest", "Encrypted message: $encryptedMessage")
 
-        val decryptedMessage = encryptor.decrypt(encryptedMessage)
+        val decryptedMessage = cryptoSDK.decrypt(encryptedMessage)
         Log.d("EncryptorTest", "Decrypted message: $decryptedMessage")
         assertEquals(message, decryptedMessage)
     }
